@@ -43,6 +43,9 @@ public class Main {
         ArrayList<Student> studentList = new ArrayList<>();
         Scanner in = new Scanner(new File("p02-students.txt"));
 
+        // Scanner se usa punto como separador decimal
+        in.useLocale(java.util.Locale.US);
+
         while (in.hasNext()) {
             String studentType = in.next();
             if (studentType.equals("C")) {
@@ -62,7 +65,11 @@ public class Main {
         String fname = pIn.next();
         OnCampusStudent student = new OnCampusStudent(id, fname, lname);
         String res = pIn.next();
-        double fee = pIn.nextDouble();
+
+        // Leer fee como String y convertir
+        String feeStr = pIn.next();
+        double fee = Double.parseDouble(feeStr.replace(",", "."));
+
         int credits = pIn.nextInt();
 
         if (res.equals("R")) {
@@ -98,7 +105,15 @@ public class Main {
         PrintWriter out = new PrintWriter(new File("p02-tuition.txt"));
 
         for (Student student : pStudentList) {
-            out.printf("%-16s %-20s %-15s %8.2f\n",
+            // Debug: imprimir en consola , no lo toquen
+            System.out.printf("Escribiendo: %-16s %-20s %-15s %8.2f%n",
+                    student.getId(),
+                    student.getLastName(),
+                    student.getFirstName(),
+                    student.getTuition());
+
+            // Escribir al archivo
+            out.printf("%-16s %-20s %-15s %8.2f%n",
                     student.getId(),
                     student.getLastName(),
                     student.getFirstName(),
@@ -106,6 +121,7 @@ public class Main {
         }
 
         out.close();
+        System.out.println("Archivo cerrado correctamente.");
     }
 }
 
