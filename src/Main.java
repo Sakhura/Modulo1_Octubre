@@ -5,7 +5,7 @@
 // Clase principal que controla el flujo del programa de cálculo de matrículas.
 //
 // INFORMACIÓN DEL CURSO Y DEL PROYECTO
-// CSE205 Programación Orientada a Objetos y Estructuras de Datos, 2025
+// CSE205 Programación Orientada a Objetos y Estructuras de Datos, 2024
 // Número de Proyecto: P02
 //
 // AUTORES:
