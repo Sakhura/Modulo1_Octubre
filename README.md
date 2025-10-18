@@ -249,12 +249,12 @@ Para verificar que el programa funciona correctamente:
 
 ## 📞 Contacto y Soporte
 
-Para dudas sobre el proyecto consultar a :
-Andrés Perot a.perotquevedo@uandresbello.edu
-Rodrigo Yañez r.yaezsepulveda@uandresbello.edu
-Lorenzo Chacano l.chacanomuoz@uandresbello.edu
-Natalia San Miguel n.sanmiguelcornejo@uandresbello.edu
-Sabina Romero s.romerorodriguez1@uandresbello.cl
+- Para dudas sobre el proyecto consultar a :
+- Andrés Perot a.perotquevedo@uandresbello.edu
+- Rodrigo Yañez r.yaezsepulveda@uandresbello.edu
+- Lorenzo Chacano l.chacanomuoz@uandresbello.edu
+- Natalia San Miguel n.sanmiguelcornejo@uandresbello.edu
+- Sabina Romero s.romerorodriguez1@uandresbello.cl
 
 ---
 
