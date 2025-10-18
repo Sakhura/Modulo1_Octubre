@@ -208,7 +208,7 @@ public class TuitionSystemGUI extends JFrame {
         studentTable.setFont(new Font("Arial", Font.PLAIN, 12));
         studentTable.getTableHeader().setFont(new Font("Arial", Font.BOLD, 12));
         studentTable.getTableHeader().setBackground(new Color(52, 73, 94));
-        studentTable.getTableHeader().setForeground(Color.WHITE);
+        studentTable.getTableHeader().setForeground(Color.black);
 
         // Configurar anchos de columna
         studentTable.getColumnModel().getColumn(0).setPreferredWidth(120);
