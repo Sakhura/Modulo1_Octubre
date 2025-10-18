@@ -1,16 +1,41 @@
+//**************************************************************************************************
+// CLASS: Main (Main.java)
+//
+// DESCRIPCIÓN
+// Clase principal que controla el flujo del programa de cálculo de matrículas.
+//
+// INFORMACIÓN DEL CURSO Y DEL PROYECTO
+// CSE205 Programación Orientada a Objetos y Estructuras de Datos, 2025
+// Número de Proyecto: P02
+//
+// AUTORES:
+// Andrés Perot a.perotquevedo@uandresbello.edu
+// Rodrigo Yañez r.yaezsepulveda@uandresbello.edu
+// Lorenzo Chacano l.chacanomuoz@uandresbello.edu
+// Natalia San Miguel n.sanmiguelcornejo@uandresbello.edu
+// Sabina Romero s.romerorodriguez1@uandresbello.cl
+//**************************************************************************************************
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.Locale;
 
 public class Main {
 
+    /**.
+     * Punto de entrada del programa
+     */
     public static void main(String[] args) {
         Main main = new Main();
         main.run();
     }
 
+    /**
+     * Método principal que coordina el flujo del programa
+     */
     private void run() {
         ArrayList<Student> studentList = null;
 
@@ -33,18 +58,24 @@ public class Main {
         }
     }
 
+    /**
+     * Calcula la matrícula para cada estudiante en la lista
+     */
     private void calcTuition(ArrayList<Student> pStudentList) {
         for (Student student : pStudentList) {
             student.calcTuition();
         }
     }
 
+    /**
+     * Lee el archivo de estudiantes y crea la lista de objetos Student
+     */
     private ArrayList<Student> readFile() throws FileNotFoundException {
         ArrayList<Student> studentList = new ArrayList<>();
         Scanner in = new Scanner(new File("p02-students.txt"));
 
-        // Scanner se usa punto como separador decimal
-        in.useLocale(java.util.Locale.US);
+        // Importante: usar Locale.US para asegurar punto como separador decimal
+        in.useLocale(Locale.US);
 
         while (in.hasNext()) {
             String studentType = in.next();
@@ -59,17 +90,16 @@ public class Main {
         return studentList;
     }
 
+    /**
+     * Lee un estudiante OnCampus del scanner
+     */
     private OnCampusStudent readOnCampusStudent(Scanner pIn) {
         String id = pIn.next();
         String lname = pIn.next();
         String fname = pIn.next();
         OnCampusStudent student = new OnCampusStudent(id, fname, lname);
         String res = pIn.next();
-
-        // Leer fee como String y convertir
-        String feeStr = pIn.next();
-        double fee = Double.parseDouble(feeStr.replace(",", "."));
-
+        double fee = pIn.nextDouble();
         int credits = pIn.nextInt();
 
         if (res.equals("R")) {
@@ -83,6 +113,9 @@ public class Main {
         return student;
     }
 
+    /**
+     * Lee un estudiante Online del scanner
+     */
     private OnlineStudent readOnlineStudent(Scanner pIn) {
         String id = pIn.next();
         String lname = pIn.next();
@@ -101,19 +134,15 @@ public class Main {
         return student;
     }
 
+    /**
+     * Escribe el archivo de salida con las matrículas calculadas
+     */
     private void writeFile(ArrayList<Student> pStudentList) throws FileNotFoundException {
         PrintWriter out = new PrintWriter(new File("p02-tuition.txt"));
 
+        // Importante: usar Locale.US para asegurar punto como separador decimal
         for (Student student : pStudentList) {
-            // Debug: imprimir en consola , no lo toquen
-            System.out.printf("Escribiendo: %-16s %-20s %-15s %8.2f%n",
-                    student.getId(),
-                    student.getLastName(),
-                    student.getFirstName(),
-                    student.getTuition());
-
-            // Escribir al archivo
-            out.printf("%-16s %-20s %-15s %8.2f%n",
+            out.printf(Locale.US, "%-16s %-20s %-15s %8.2f%n",
                     student.getId(),
                     student.getLastName(),
                     student.getFirstName(),
@@ -121,13 +150,5 @@ public class Main {
         }
 
         out.close();
-        System.out.println("Archivo cerrado correctamente.");
     }
 }
-
-//**Crea un archivo `p02-students.txt` en la raíz del proyecto con datos de prueba:
-// C 8230123345450 Flintstone Fred R 750 12
-// C 3873472785863 Simpson Lisa R 500 18
-// O 2873472978693 Szyslak Moe F 24
-// C 4834324308675 Flintstone Wilma N 450 6
-// O 1384349045225 Szyslak Barney T 30
