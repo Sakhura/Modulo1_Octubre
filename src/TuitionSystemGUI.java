@@ -150,7 +150,7 @@ public class TuitionSystemGUI extends JFrame {
     private JButton createStyledButton(String text, Color bgColor) {
         JButton button = new JButton(text);
         button.setBackground(bgColor);
-        button.setForeground(Color.WHITE);
+        button.setForeground(Color.BLACK);
         button.setFont(new Font("Arial", Font.BOLD, 12));
         button.setBorder(BorderFactory.createEmptyBorder(8, 15, 8, 15));
         button.setFocusPainted(false);
@@ -444,8 +444,8 @@ public class TuitionSystemGUI extends JFrame {
                 row[5] = ols.getTechFee() ? "Con Tech Fee" : "Sin Tech Fee";
                 row[6] = 0.0;
             }
-
-            row[7] = String.format("%.2f", student.getTuition());
+            // Se asigna como Double
+            row[7] = student.getTuition();
 
             tableModel.addRow(row);
         }
